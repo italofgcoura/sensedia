@@ -8,8 +8,8 @@ import { TableComponent, TableRow, TableHead, TableData } from "./styles";
 
 import { Info } from "../InfoText";
 
-const Table = () => {
-  const { filtered } = useContext(HomeContext);
+const Table: React.FC<any> = ({ items }) => {
+  // const { filtered } = useContext(HomeContext);
 
   return (
     <TableComponent>
@@ -33,7 +33,7 @@ const Table = () => {
         </tr>
       </thead>
       <tbody>
-        {filtered.map((item) => (
+        {items.map((item: any) => (
           <TableRow key={item.id}>
             <TableData width={"10%"}>
               <Info centralized>{item.id}</Info>

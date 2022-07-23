@@ -31,7 +31,7 @@ function Home({ children }: Props) {
     setFiltered(homeData);
   }, [homeData]);
 
-  const loadHome = async () => {
+  const loadHome = useCallback(async () => {
     let temp: any = [];
     try {
       temp = await getHomeData();
@@ -39,9 +39,9 @@ function Home({ children }: Props) {
     } catch (error) {
       return [];
     }
-  };
+  }, []);
 
-  const treatData = (rawData: object[]) => {
+  const treatData = useCallback((rawData: object[]) => {
     let temp: any = [];
     rawData.forEach((item: IHomeData) => {
       temp.push({
@@ -52,7 +52,7 @@ function Home({ children }: Props) {
     });
     console.log("temp", temp);
     setHomeData(temp);
-  };
+  }, []);
 
   const filter = () => {
     if (!parameter) {
