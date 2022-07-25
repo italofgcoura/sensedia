@@ -17,6 +17,13 @@
   align-items: center;
 }
 
+@media (max-width: 768px) {
+  .paginationContainer {
+    width: 100%;
+    padding-left: 0;
+  }
+}
+
 .paginationContainer > li {
   list-style: none;
 }

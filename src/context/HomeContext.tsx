@@ -6,6 +6,8 @@ import { IHomeData, IHomeContext, Props } from "./types";
 
 import { initialValue } from "./initialValues";
 
+import useWindowDimensions from "../hooks/UseDimension";
+
 const HomeContext = createContext<IHomeContext>(initialValue);
 
 function Home({ children }: Props) {
@@ -15,7 +17,11 @@ function Home({ children }: Props) {
 
   const [parameter, setParameter] = useState(initialValue.parameter);
 
-  const [viewType, setViewType] = useState(initialValue.viewType);
+  const { height, width } = useWindowDimensions();
+
+  const [viewType, setViewType] = useState(
+    width < 768 ? "grid" : initialValue.viewType
+  );
 
   const [currentItems, setCurrentItems] = useState<any>(
     initialValue.currentItems
@@ -28,6 +34,8 @@ function Home({ children }: Props) {
   const [dispatchPagination, setDispatchPagination] = useState(
     initialValue.dispatchPagination
   );
+
+  console.log(width);
 
   useEffect(() => {
     setFiltered(homeData);

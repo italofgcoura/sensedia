@@ -2,6 +2,11 @@ import styled from "styled-components";
 
 export const Form = styled.form`
   width: 620px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-bottom: 16px;
+  }
 `;
 
 export const InputSearch = styled.input`

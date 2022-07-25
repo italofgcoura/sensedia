@@ -19,4 +19,7 @@ export const Button = styled.button`
     background-color: ${({ theme }) => theme.colors.lightGray};
     cursor: auto;
   }
+  @media (max-width: 768px) {
+    margin-bottom: 16px;
+  }
 `;

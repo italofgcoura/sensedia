@@ -8,4 +8,8 @@ export const DropDown = styled.select`
   max-width: 177px;
   width: 100%;
   font-size: 15.5px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
