@@ -13,6 +13,8 @@ import { HomeContext } from "../../context/HomeContext";
 import Table from "../../components/Table";
 import Grid from "../../components/Grid";
 
+import NotFound from "../../components/NotFound";
+
 const Home: React.FC = () => {
   const { loadHome, currentItems, filtered, viewType, loading } = useContext(
     HomeContext
@@ -25,8 +27,9 @@ const Home: React.FC = () => {
   useEffect(() => {
     load();
   }, []);
-  console.log(loading);
+
   if (loading) return <p>loading...</p>;
+
   return (
     <Container>
       <HomeComponent>
@@ -48,7 +51,7 @@ const Home: React.FC = () => {
             <Pagination />
           </>
         ) : (
-          <p>:( No items to show</p>
+          <NotFound />
         )}
         {/* {homeData.map((item) => (
           <div key={item.id}>

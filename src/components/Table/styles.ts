@@ -12,6 +12,7 @@ interface TableHeadProps {
   width: string;
   bold?: boolean;
   centralized?: boolean;
+  sortHeadStyled?: object;
 }
 
 export const TableHead = styled.th<TableHeadProps>`
@@ -23,6 +24,9 @@ export const TableHead = styled.th<TableHeadProps>`
   padding-left: 24px;
   font-weight: 700;
   border-bottom: 1px solid ${({ theme }) => theme.colors.lightGray};
+  img {
+    transition: 0.3s;
+  }
 `;
 
 export const TableRow = styled.tr`

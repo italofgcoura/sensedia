@@ -7,7 +7,7 @@ import { Button } from "./styles";
 import { HomeContext } from "../../context/HomeContext";
 
 const SearchButton: React.FC = () => {
-  const { filter, parameter } = useContext(HomeContext);
+  const { filter, parameter, filtered } = useContext(HomeContext);
 
   return (
     <Button onClick={filter} disabled={!parameter}>

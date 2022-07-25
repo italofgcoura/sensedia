@@ -17,9 +17,17 @@ function Home({ children }: Props) {
 
   const [viewType, setViewType] = useState(initialValue.viewType);
 
-  const [currentItems, setCurrentItems] = useState<any>(null);
+  const [currentItems, setCurrentItems] = useState<any>(
+    initialValue.currentItems
+  );
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(initialValue.loading);
+
+  const [ascSort, setAscSort] = useState(initialValue.ascSort);
+
+  const [dispatchPagination, setDispatchPagination] = useState(
+    initialValue.dispatchPagination
+  );
 
   useEffect(() => {
     setFiltered(homeData);
@@ -73,7 +81,42 @@ function Home({ children }: Props) {
     setViewType(type);
   };
 
-  console.log(loading);
+  useEffect(() => {
+    handleSort();
+  }, [ascSort]);
+
+  const handleSort = () => {
+    if (ascSort)
+      setFiltered(
+        filtered.sort((a: any, b: any) => {
+          if (a?.title! > b?.title!) {
+            return 1;
+          }
+
+          if (a?.title! < b?.title!) {
+            return -1;
+          }
+
+          return 0;
+        })
+      );
+    else {
+      setFiltered(
+        filtered.sort((a: any, b: any) => {
+          if (a?.title! < b?.title!) {
+            return 1;
+          }
+          if (a?.title! > b?.title!) {
+            return -1;
+          }
+          return 0;
+        })
+      );
+    }
+    setDispatchPagination(!dispatchPagination);
+  };
+
+  console.log("filtered", filtered);
 
   return (
     <HomeContext.Provider
@@ -91,6 +134,10 @@ function Home({ children }: Props) {
         handleChangeViewType,
         loading,
         setLoading,
+        handleSort,
+        ascSort,
+        setAscSort,
+        dispatchPagination,
       }}
     >
       {children}

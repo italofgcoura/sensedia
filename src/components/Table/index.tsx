@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { TableComponent, TableRow, TableHead, TableData } from "./styles";
 
 import { Info } from "../InfoText";
+
+import arrowDown from "../../assets/images/keyboard_arrow_down_black_24dp.svg";
+
+import { HomeContext } from "../../context/HomeContext";
+import { transform } from "typescript";
 
 interface iItem {
   id: number;
@@ -12,7 +17,15 @@ interface iItem {
   createDate: string;
 }
 
+const sortHeadStyled = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "spaceBetween",
+};
+
 const Table: React.FC<any> = ({ items }) => {
+  const { setAscSort, ascSort } = useContext(HomeContext);
+
   return (
     <TableComponent>
       <thead>
@@ -20,8 +33,21 @@ const Table: React.FC<any> = ({ items }) => {
           <TableHead width={"10%"} scope="col" centralized>
             POST ID
           </TableHead>
-          <TableHead width={"15%"} scope="col">
-            TITLE
+          <TableHead
+            width={"15%"}
+            scope="col"
+            onClick={() => setAscSort(!ascSort)}
+          >
+            <span>TITLE</span>
+            <img
+              src={arrowDown}
+              alt="sort"
+              style={
+                ascSort
+                  ? { transform: "rotate(180deg)" }
+                  : { transform: "rotate(00deg)" }
+              }
+            />
           </TableHead>
           <TableHead width={"15%"} scope="col">
             AUTHOR

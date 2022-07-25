@@ -12,7 +12,7 @@ const ClearButton: React.FC = () => {
       onClick={() => {
         handleClearParameter();
       }}
-      disabled={!filtered.length || !parameter}
+      disabled={!filtered.length && !parameter}
     >
       clear
     </Button>

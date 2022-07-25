@@ -13,6 +13,7 @@ interface IHomeContext {
   homeData: IHomeData[];
   filter: () => void;
   filtered: IHomeData[];
+  handleSort: () => void;
   parameter: string;
   handleChangeParameter: (value: string) => void;
   handleClearParameter: () => void;
@@ -22,6 +23,10 @@ interface IHomeContext {
   handleChangeViewType: (type: string) => void;
   loading: boolean;
   setLoading: (loading: boolean) => void;
+  ascSort: boolean;
+  setAscSort: (ascSort: boolean) => void;
+  dispatchPagination: boolean;
+  // setDispatchPagination: (dispatchPagination: boolean) => void;
 }
 
 interface Props {

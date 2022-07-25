@@ -13,4 +13,9 @@ export const initialValue = {
   setCurrentItems: () => {},
   loading: true,
   setLoading: () => {},
+  handleSort: () => {},
+  ascSort: false,
+  setAscSort: () => {},
+  dispatchPagination: false,
+  setDispatchPagination: () => {},
 };

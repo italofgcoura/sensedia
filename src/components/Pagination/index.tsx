@@ -19,9 +19,14 @@ const NextLabel = () => {
 };
 
 export default function App() {
-  const { filtered, setCurrentItems, viewType, setLoading } = useContext(
-    HomeContext
-  );
+  const {
+    filtered,
+    setCurrentItems,
+    viewType,
+    setLoading,
+    ascSort,
+    dispatchPagination
+  } = useContext(HomeContext);
 
   const itemsPerPage: number = useMemo<number>(() => {
     if (viewType === "grid") return 8;
@@ -37,11 +42,12 @@ export default function App() {
 
   useEffect(() => {
     // Fetch items from another resources.
+    console.log("useeffect");
     const endOffset = itemOffset + itemsPerPage;
     setCurrentItems(filtered.slice(itemOffset, endOffset));
     setPageCount(Math.ceil(filtered.length / itemsPerPage));
     setLoading(false);
-  }, [itemOffset, itemsPerPage, filtered]);
+  }, [itemOffset, itemsPerPage, filtered, ascSort,dispatchPagination]);
 
   // Invoke when user click to request another page.
   const handlePageClick = (event: any) => {
