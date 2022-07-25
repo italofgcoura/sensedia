@@ -1,22 +1,28 @@
-import React, { useContext } from "react";
+import React from "react";
 
-import { HomeContext } from "../../context/HomeContext";
 
 import { GridComponent } from "./styles";
 
 import GridCard from "../GridCard";
 
-const Grid: React.FC = () => {
-  const { filtered } = useContext(HomeContext);
+interface iItem {
+  id: number;
+  title: string;
+  author: string;
+  body: string;
+  createDate: string;
+}
+
+const Grid: React.FC<any> = ({items}) => {
 
   return (
     <GridComponent>
-      {filtered.map((item) => (
+      {items.map((item: iItem) => (
         <GridCard
           key={item.id}
           title={item.title?.substring(0, 10).concat("...")!}
           author={item.author!}
-          body={item.body?.substring(0, 140).concat("...")!}
+          body={item.body?.substring(0, 130).concat("...")!}
           createDate={item.createDate!}
         />
       ))}

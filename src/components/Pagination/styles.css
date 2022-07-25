@@ -1,0 +1,39 @@
+.active {
+  background-color: var(--color-primary);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+}
+
+.paginationContainer {
+  display: flex;
+  width: 30%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.paginationContainer > li {
+  list-style: none;
+}
+
+/* .paginationBreak {
+  display: none;
+} */
+
+.paginationBreakLinkClassName {
+  text-decoration: none;
+}
+
+.previous > a,
+.next > a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: var(--color-gray);
+  font-weight: bold;
+}

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import GlobalStyles from "./assets/styles/global";
 import { ThemeProvider } from "styled-components";

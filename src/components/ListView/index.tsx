@@ -5,19 +5,20 @@ import { DropDown } from "./styles";
 import { HomeContext } from "../../context/HomeContext";
 
 const ListView: React.FC = () => {
-  const { handleChangeViewType } = useContext(HomeContext);
+  const { handleChangeViewType, filtered } = useContext(HomeContext);
 
   return (
     <DropDown
       name="cars"
       id="cars"
       onChange={(e) => handleChangeViewType(e.target.value)}
+      disabled={!filtered.length}
     >
       <option value="list" data-icon="glyphicon-th-list">
-        <span>List View</span>
+        List View
       </option>
       <option value="grid" data-icon="glyphicon-th">
-        <span>Grid View</span>
+        Grid View
       </option>
     </DropDown>
     // <DropdownButton id="dropdown-basic-button" title="Dropdown button">

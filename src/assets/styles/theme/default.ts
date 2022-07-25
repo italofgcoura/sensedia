@@ -8,6 +8,9 @@ const theme: DefaultTheme = {
     black: "#000000",
     white: "#ffffff",
   },
+  spacing: {
+    radius: "4px",
+  },
 };
 
 export default theme;

@@ -11,4 +11,9 @@ export const Button = styled.button`
   justify-content: center;
   border: none;
   padding: 0 24px;
+  transition: 0.3s;
+  &:disabled {
+    color: ${({ theme }) => theme.colors.lightGray};
+    cursor: auto;
+  }
 `;

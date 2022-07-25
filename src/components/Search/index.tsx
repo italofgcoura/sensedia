@@ -5,7 +5,7 @@ import { InputSearch } from "./styles";
 import { HomeContext } from "../../context/HomeContext";
 
 const Search: React.FC = () => {
-  const { handleChangeParameter, parameter } = useContext(HomeContext);
+  const { handleChangeParameter, parameter, filtered } = useContext(HomeContext);
 
   return (
     <>
@@ -13,6 +13,7 @@ const Search: React.FC = () => {
         placeholder="Type for search..."
         onChange={(e) => handleChangeParameter(e.target.value)}
         value={parameter}
+        disabled={!filtered.length}
       />
     </>
   );

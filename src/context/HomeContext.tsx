@@ -1,20 +1,10 @@
-import React, {
-  useState,
-  createContext,
-  ReactNode,
-  useCallback,
-  useEffect,
-} from "react";
+import React, { useState, createContext, useCallback, useEffect } from "react";
 
 import { getHomeData } from "../services/Home";
 
 import { IHomeData, IHomeContext, Props } from "./types";
 
 import { initialValue } from "./initialValues";
-
-// import { api } from "../httpClient";
-// import { setEnvironmentData } from "worker_threads";
-// import { isBigIntLiteral } from "typescript";
 
 const HomeContext = createContext<IHomeContext>(initialValue);
 
@@ -27,17 +17,24 @@ function Home({ children }: Props) {
 
   const [viewType, setViewType] = useState(initialValue.viewType);
 
+  const [currentItems, setCurrentItems] = useState<any>(null);
+
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     setFiltered(homeData);
   }, [homeData]);
 
   const loadHome = useCallback(async () => {
+    setLoading(true);
     let temp: any = [];
     try {
       temp = await getHomeData();
       treatData(temp.data);
     } catch (error) {
       return [];
+    } finally {
+      setLoading(false);
     }
   }, []);
 
@@ -50,7 +47,6 @@ function Home({ children }: Props) {
         createDate: "12/22/2021 05:30:00 PM",
       });
     });
-    console.log("temp", temp);
     setHomeData(temp);
   }, []);
 
@@ -64,14 +60,11 @@ function Home({ children }: Props) {
     );
   };
 
-  console.log("parameter", parameter);
-
   const handleChangeParameter = (value: string) => {
     setParameter(value);
   };
 
   const handleClearParameter = () => {
-    console.log("clear");
     setParameter("");
     setFiltered(homeData);
   };
@@ -80,6 +73,8 @@ function Home({ children }: Props) {
     setViewType(type);
   };
 
+  console.log(loading);
+
   return (
     <HomeContext.Provider
       value={{
@@ -87,11 +82,15 @@ function Home({ children }: Props) {
         homeData,
         filter,
         filtered,
+        currentItems,
+        setCurrentItems,
         handleChangeParameter,
         parameter,
         handleClearParameter,
         viewType,
         handleChangeViewType,
+        loading,
+        setLoading,
       }}
     >
       {children}

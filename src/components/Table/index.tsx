@@ -1,16 +1,18 @@
-import React, { useMemo, useContext } from "react";
-
-import { useTable, Column } from "react-table";
-
-import { HomeContext } from "../../context/HomeContext";
+import React from "react";
 
 import { TableComponent, TableRow, TableHead, TableData } from "./styles";
 
 import { Info } from "../InfoText";
 
-const Table: React.FC<any> = ({ items }) => {
-  // const { filtered } = useContext(HomeContext);
+interface iItem {
+  id: number;
+  title: string;
+  author: string;
+  body: string;
+  createDate: string;
+}
 
+const Table: React.FC<any> = ({ items }) => {
   return (
     <TableComponent>
       <thead>
@@ -33,7 +35,7 @@ const Table: React.FC<any> = ({ items }) => {
         </tr>
       </thead>
       <tbody>
-        {items.map((item: any) => (
+        {items.map((item: iItem) => (
           <TableRow key={item.id}>
             <TableData width={"10%"}>
               <Info centralized>{item.id}</Info>
@@ -53,119 +55,6 @@ const Table: React.FC<any> = ({ items }) => {
       </tbody>
     </TableComponent>
   );
-
-  // const data = useMemo(() => homeData, [homeData]);
-
-  // const columns: Column[] = React.useMemo(
-  //   () => [
-  //     {
-  //       Header: "POSTID",
-  //       accessor: "id", // accessor is the "key" in the data
-  //     },
-  //     {
-  //       Header: "TITLE",
-  //       accessor: "title",
-  //     },
-  //     {
-  //       Header: "AUTHOR",
-  //       accessor: "author",
-  //     },
-  //     {
-  //       Header: "BODY",
-  //       accessor: "body",
-  //     },
-  //     {
-  //       Header: "CREATION DATE",
-  //       accessor: "createDate",
-  //     },
-  //   ],
-  //   []
-  // );
-
-  // const tableInstance = useTable({ columns, data });
-
-  // const {
-  //   getTableProps,
-
-  //   getTableBodyProps,
-
-  //   headerGroups,
-
-  //   rows,
-
-  //   prepareRow,
-  // } = tableInstance;
-
-  // return (
-  //   // apply the table props
-
-  //   <table {...getTableProps()}>
-  //     <thead>
-  //       {
-  //         // Loop over the header rows
-
-  //         headerGroups.map((headerGroup) => (
-  //           // Apply the header row props
-
-  //           <tr {...headerGroup.getHeaderGroupProps()}>
-  //             {
-  //               // Loop over the headers in each row
-
-  //               headerGroup.headers.map((column) => (
-  //                 // Apply the header cell props
-
-  //                 <th {...column.getHeaderProps()}>
-  //                   {
-  //                     // Render the header
-  //                     column.render("Header")
-  //                   }
-  //                 </th>
-  //               ))
-  //             }
-  //           </tr>
-  //         ))
-  //       }
-  //     </thead>
-
-  //     {/* Apply the table body props */}
-
-  //     <tbody {...getTableBodyProps()}>
-  //       {
-  //         // Loop over the table rows
-
-  //         rows.map((row) => {
-  //           // Prepare the row for display
-
-  //           prepareRow(row);
-
-  //           return (
-  //             // Apply the row props
-
-  //             <tr {...row.getRowProps()}>
-  //               {
-  //                 // Loop over the rows cells
-
-  //                 row.cells.map((cell) => {
-  //                   // Apply the cell props
-
-  //                   return (
-  //                     <td {...cell.getCellProps()}>
-  //                       {
-  //                         // Render the cell contents
-
-  //                         cell.render("Cell")
-  //                       }
-  //                     </td>
-  //                   );
-  //                 })
-  //               }
-  //             </tr>
-  //           );
-  //         })
-  //       }
-  //     </tbody>
-  //   </table>
-  // );
 };
 
 export default Table;

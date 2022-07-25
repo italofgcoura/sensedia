@@ -5,16 +5,14 @@ import { Button } from "./styles";
 import { HomeContext } from "../../context/HomeContext";
 
 const ClearButton: React.FC = () => {
-  const { handleClearParameter } = useContext(HomeContext);
+  const { handleClearParameter, filtered, parameter } = useContext(HomeContext);
 
   return (
     <Button
       onClick={() => {
-        console.log('click')
         handleClearParameter();
-
-
       }}
+      disabled={!filtered.length || !parameter}
     >
       clear
     </Button>

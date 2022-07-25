@@ -7,5 +7,10 @@ export const initialValue = {
   handleChangeParameter: () => {},
   handleClearParameter: () => {},
   handleChangeViewType: () => {},
+  setFiltered: () => {},
   viewType: "list",
+  currentItems: [],
+  setCurrentItems: () => {},
+  loading: true,
+  setLoading: () => {},
 };

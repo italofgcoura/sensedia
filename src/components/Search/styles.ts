@@ -8,5 +8,8 @@ export const InputSearch = styled.input`
   max-width: 620px;
   width: 100%;
   font-size: 16px;
-
+  transition: 0.3s;
+  &:disabled {
+    background-color: ${({ theme }) => theme.colors.lightGray};
+  }
 `;

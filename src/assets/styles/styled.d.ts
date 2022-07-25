@@ -13,5 +13,8 @@ declare module "styled-components" {
       black?: string;
       white?: string;
     };
+    spacing: {
+      radius?: string;
+    };
   }
 }

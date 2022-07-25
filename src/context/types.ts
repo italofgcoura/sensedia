@@ -16,8 +16,12 @@ interface IHomeContext {
   parameter: string;
   handleChangeParameter: (value: string) => void;
   handleClearParameter: () => void;
+  currentItems: IHomeData[];
+  setCurrentItems: (filtered: any) => void;
   viewType: string;
   handleChangeViewType: (type: string) => void;
+  loading: boolean;
+  setLoading: (loading: boolean) => void;
 }
 
 interface Props {

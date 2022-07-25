@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const TableComponent = styled.table`
   width: 100%;
   border: 1px solid ${({ theme }) => theme.colors.lightGray};
-  border-radius: 4px;
+  border-radius: ${({ theme }) => theme.spacing.radius};
   padding: 16px 0;
   border-collapse: collapse;
 `;
@@ -19,7 +19,6 @@ export const TableHead = styled.th<TableHeadProps>`
   font-size: 12px;
   text-align: ${({ centralized }) => (centralized ? "center" : "left")};
   width: ${({ width }) => width};
-  padding-left: 24px;
   padding: 16px 0;
   padding-left: 24px;
   font-weight: 700;
@@ -31,7 +30,6 @@ export const TableRow = styled.tr`
 `;
 
 export const TableData = styled.td<TableHeadProps>`
-  padding-left: 24px;
   width: ${({ width }) => width};
   padding: 16px 0;
   padding-left: 24px;

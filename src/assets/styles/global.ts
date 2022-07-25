@@ -9,6 +9,12 @@ export default createGlobalStyle`
 
 }
 
+html {
+  --color-primary: #5C21AA;
+  --color-white: white;
+  --color-gray: #6A6A6A;
+}
+
 body{
    
   font-size: 16px;
